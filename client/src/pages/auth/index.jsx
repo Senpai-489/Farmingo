@@ -73,14 +73,17 @@ const Auth = () => {
   //   }
   // };
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center">
-      <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[50vw] rounded-3xl grid ">
+    <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[#99c5e0]">
+      <div className="border-red-500 h-[15vh] w-[15vw] absolute top-0 left-0 p-2">
+        <img src="logo_svg.svg"/>
+      </div>
+      <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-gray-600 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[50vw] rounded-3xl grid ">
         <div className="flex flex-col gap-10 items-center justify-center">
           <div className="flex items-center justify-center flex-col">
             <div className="flex items-center justify-center">
               <h1 className="text-5xl font-bold md:text-6xl">Welcome</h1>
             </div>
-            <p className="font-medium text-center">
+            <p className="font-medium text-center pt-3">
               Fill in the details to get started with Farmingo!
             </p>
           </div>
