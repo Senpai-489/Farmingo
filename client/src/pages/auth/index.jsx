@@ -79,7 +79,7 @@ const Auth = () => {
   return (
     // <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[#99c5e0]">
     <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-white">
-      <div className="border-red-500 h-[15vh] w-[15vw] absolute top-0 left-0 p-2">
+      <div className=" h-[15vh] w-[15vw] absolute top-0 left-0 p-2">
         <img src="logo_svg.svg"/>
       </div>
       <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-gray-600 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[50vw] rounded-3xl grid ">
