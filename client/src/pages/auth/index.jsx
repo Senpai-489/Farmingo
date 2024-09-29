@@ -4,6 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { apiClient } from "@/lib/api-client.js";
+import { LOGIN_ROUTE, SIGNUP_ROUTE } from "@/utils/constants";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -40,40 +42,41 @@ const Auth = () => {
     return true;
   };
 
-  // const handleLogin = async () => {
-  //   if (validationLogin()) {
-  //     const response = await apiClient.post(
-  //       LOGIN_ROUTE,
-  //       { email, password },
-  //       { withCredentials: true }
-  //     );
-  //     if (response.data.user.id) {
-  //       setUserInfo(response.data.user)
-  //       if (response.data.user.profileSetup) {
-  //         navigate("/chat");
-  //       } else {
-  //         navigate("/profile");
-  //       }
-  //     }
-  //   }
-  // };
+  const handleLogin = async () => {
+    if (validationLogin()) {
+      const response = await apiClient.post(
+        LOGIN_ROUTE,
+        { email, password },
+        { withCredentials: true }
+      );
+      if (response.data.user.id) {
+        // setUserInfo(response.data.user)
+        if (response.data.user.profileSetup) {
+          navigate("/profile");
+        } else {
+          navigate("/profile");
+        }
+      }
+    }
+  };
   
-  // const handleSignup = async () => {
-  //   if (validationSignup()) {
-  //     const payload = { email, password };
+  const handleSignup = async () => {
+    if (validationSignup()) {
+      const payload = { email, password };
       
-  //     const response = await apiClient.post(SIGNUP_ROUTE, payload, {
-  //       withCredentials: true,
-  //     });
-  //     console.log({ response });
-  //     if (response.status === 201) {
-  //       setUserInfo(response.data.user)
-  //       navigate("/profile");
-  //     }
-  //   }
-  // };
+      const response = await apiClient.post(SIGNUP_ROUTE, payload, {
+        withCredentials: true,
+      });
+      console.log({ response });
+      if (response.status === 201) {
+        setUserInfo(response.data.user)
+        navigate("/profile");
+      }
+    }
+  };
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[#99c5e0]">
+    // <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[#99c5e0]">
+    <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-white">
       <div className="border-red-500 h-[15vh] w-[15vw] absolute top-0 left-0 p-2">
         <img src="logo_svg.svg"/>
       </div>
@@ -118,7 +121,7 @@ const Auth = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Button className="rounded-full p-6 bg-[#365170]" >
+                <Button className="rounded-full p-6 bg-[#365170]" onClick={handleLogin}>
                   Login
                 </Button>
               </TabsContent>
@@ -144,7 +147,7 @@ const Auth = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <Button className="rounded-full p-6 bg-[#365170]" >
+                <Button className="rounded-full p-6 bg-[#365170]" onClick={handleSignup} >
                   SignUp
                 </Button>
               </TabsContent>
