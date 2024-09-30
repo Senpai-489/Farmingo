@@ -7,13 +7,13 @@ import SvgComponenta from '@/assets/Farmer';
 import { Link, Routes, Route } from 'react-router-dom'; // Import necessary routing components
 
 // Import your page components for each route
-import Dashboard from '@/pages/Dashboard/Dashboard';// Assuming you have this component
-import Schemes from '@/pages/dashboardpages/Scheme'; // Assuming you have this component
-import Irrigation from '@/pages/dashboardpages/Irrigation'; // Assuming you have this component
-import HistoricalYield from '@/pages/dashboardpages/Historical';
-import AISamadhaan from '@/pages/dashboardpages/Aisamadhan';
-import Weather from '@/pages/dashboardpages/Weather';
-import User from '@/pages/dashboardpages/User';
+import Dashboard from '@/pages/Dashboard/Dashboard.jsx';// Assuming you have this component
+import Schemes from '@/pages/dashboardpages/Scheme.jsx'; // Assuming you have this component
+import Irrigation from '@/pages/dashboardpages/Irrigation.jsx'; // Assuming you have this component
+import HistoricalYield from '@/pages/dashboardpages/Historical.jsx';
+import AISamadhaan from '@/pages/dashboardpages/Aisamadhan.jsx';
+import Weather from '@/pages/dashboardpages/Weather.jsx';
+import User from '@/pages/dashboardpages/User.jsx';
 // import HistoricalYield from './HistoricalYield'; // Assuming you have this component
 // import AISamadhaan from './AISamadhaan'; // Assuming you have this component
 // import Weather from './Weather'; // Assuming you have this component
