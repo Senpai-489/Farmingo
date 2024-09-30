@@ -6,9 +6,18 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
 import Profile from "./pages/profile";
 import { useAppStore } from "./store";
-import Dashboard from "./pages/dashboard";
+// import Dashboard from "./pages/dashboard";
 import { apiClient } from "./lib/api-client";
 import { GET_USER_INFO } from "./utils/constants";
+
+//Harsh
+import Dashboard from './pages/Dashboard/Dashboard'
+import Schemes from './pages/dashboardpages/Scheme'
+import Irrigation from './pages/dashboardpages/Irrigation'
+import HistoricalYield from '@/pages/dashboardpages/Historical';
+import AISamadhaan from '@/pages/dashboardpages/Aisamadhan';
+import Weather from '@/pages/dashboardpages/Weather';
+import User from '@/pages/dashboardpages/User';
 
 const PrivateRoute = ({ children }) => {
   const { userInfo } = useAppStore();
@@ -57,11 +66,8 @@ const App = () => {
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Landing/>}/>
-    <Route path="/auth" element={<Auth/>}/>
-    <Route path="/profile" element={<Profile/>}/>
-    <Route path='*' element={<Navigate to="auth"/>}/>
-    </Routes>
-      <Routes>
+   
+    
         <Route
           path="/auth"
           element={
@@ -77,8 +83,8 @@ const App = () => {
               <Profile />
             </PrivateRoute>
           }
-        />
-        <Route
+        /> 
+         <Route
           path="/dashboard"
           element={
             <PrivateRoute>
@@ -86,7 +92,15 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Navigate to="auth" />} />
+    
+    <Route path="/schemes" element={<Schemes/>}/>
+    <Route path="/irrigation" element={<Irrigation/>}/>
+    <Route path="/historical" element={<HistoricalYield/>} />
+    <Route path="/ai" element={<AISamadhaan/>} />
+    <Route path="/weather" element={<Weather/>} />
+    <Route path="/user" element={<User/>} />
+    <Route path="*" element={<Navigate to="auth" />} />
+
       </Routes>
     </BrowserRouter>
   );
