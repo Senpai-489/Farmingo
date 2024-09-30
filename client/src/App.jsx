@@ -1,3 +1,6 @@
+
+import Landing from './pages/Landing/Landing'
+
 import React, { Children, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
@@ -52,6 +55,12 @@ const App = () => {
   }
   return (
     <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Landing/>}/>
+    <Route path="/auth" element={<Auth/>}/>
+    <Route path="/profile" element={<Profile/>}/>
+    <Route path='*' element={<Navigate to="auth"/>}/>
+    </Routes>
       <Routes>
         <Route
           path="/auth"
