@@ -4,9 +4,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { apiClient } from "@/lib/api-client.js";
+import { LOGIN_ROUTE, SIGNUP_ROUTE } from "@/utils/constants";
+import { useAppStore } from "@/store";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const {setUserInfo}=useAppStore()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -40,47 +44,51 @@ const Auth = () => {
     return true;
   };
 
-  // const handleLogin = async () => {
-  //   if (validationLogin()) {
-  //     const response = await apiClient.post(
-  //       LOGIN_ROUTE,
-  //       { email, password },
-  //       { withCredentials: true }
-  //     );
-  //     if (response.data.user.id) {
-  //       setUserInfo(response.data.user)
-  //       if (response.data.user.profileSetup) {
-  //         navigate("/chat");
-  //       } else {
-  //         navigate("/profile");
-  //       }
-  //     }
-  //   }
-  // };
+  const handleLogin = async () => {
+    if (validationLogin()) {
+      const response = await apiClient.post(
+        LOGIN_ROUTE,
+        { email, password },
+        { withCredentials: true }
+      );
+      if (response.data.user.id) {
+        setUserInfo(response.data.user)
+        if (response.data.user.profileSetup) {
+          navigate("/profile");
+        } else {
+          navigate("/profile");
+        }
+      }
+    }
+  };
   
-  // const handleSignup = async () => {
-  //   if (validationSignup()) {
-  //     const payload = { email, password };
+  const handleSignup = async () => {
+    if (validationSignup()) {
+      const payload = { email, password };
       
-  //     const response = await apiClient.post(SIGNUP_ROUTE, payload, {
-  //       withCredentials: true,
-  //     });
-  //     console.log({ response });
-  //     if (response.status === 201) {
-  //       setUserInfo(response.data.user)
-  //       navigate("/profile");
-  //     }
-  //   }
-  // };
+      const response = await apiClient.post(SIGNUP_ROUTE, payload, {
+        withCredentials: true,
+      });
+      console.log({ response });
+      if (response.status === 201) {
+        setUserInfo(response.data.user)
+        navigate("/profile");
+      }
+    }
+  };
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center">
-      <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[50vw] rounded-3xl grid ">
+    // <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[#99c5e0]">
+    <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-white">
+      <div className=" h-[15vh] w-[15vw] absolute top-0 left-0 p-2">
+        <img src="logo_svg.svg"/>
+      </div>
+      <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-gray-600 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[50vw] rounded-3xl grid ">
         <div className="flex flex-col gap-10 items-center justify-center">
           <div className="flex items-center justify-center flex-col">
             <div className="flex items-center justify-center">
               <h1 className="text-5xl font-bold md:text-6xl">Welcome</h1>
             </div>
-            <p className="font-medium text-center">
+            <p className="font-medium text-center pt-3">
               Fill in the details to get started with Farmingo!
             </p>
           </div>
@@ -115,7 +123,7 @@ const Auth = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Button className="rounded-full p-6 bg-[#365170]" >
+                <Button className="rounded-full p-6 bg-[#365170]" onClick={handleLogin}>
                   Login
                 </Button>
               </TabsContent>
@@ -141,7 +149,7 @@ const Auth = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <Button className="rounded-full p-6 bg-[#365170]" >
+                <Button className="rounded-full p-6 bg-[#365170]" onClick={handleSignup} >
                   SignUp
                 </Button>
               </TabsContent>
