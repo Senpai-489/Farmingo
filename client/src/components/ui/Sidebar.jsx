@@ -14,6 +14,7 @@ import HistoricalYield from '@/pages/dashboardpages/Historical.jsx';
 import AISamadhaan from '@/pages/dashboardpages/Aisamadhan.jsx';
 import Weather from '@/pages/dashboardpages/Weather.jsx';
 import User from '@/pages/dashboardpages/User.jsx';
+import { useAppStore } from '@/store';
 // import HistoricalYield from './HistoricalYield'; // Assuming you have this component
 // import AISamadhaan from './AISamadhaan'; // Assuming you have this component
 // import Weather from './Weather'; // Assuming you have this component
@@ -21,6 +22,7 @@ import User from '@/pages/dashboardpages/User.jsx';
 
 const Sidebar = () => {
   // Sidebar toggle state
+  const {userInfo}=useAppStore();
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false); // State for theme
 
@@ -68,7 +70,7 @@ const Sidebar = () => {
         <div className="absolute bottom-0 w-full p-4">
           <div className="flex items-center">
             <SvgComponenta className="w-20 h-14 rounded-full " />
-            {isOpen && <span className="ml-4">Kisan Name</span>}
+            {isOpen && <span className="ml-4">{userInfo.firstName+userInfo.lastName}</span>}
           </div>
         </div>
       </div>

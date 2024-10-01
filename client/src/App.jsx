@@ -1,5 +1,4 @@
-
-import Landing from './pages/Landing/Landing'
+import Landing from "./pages/Landing/Landing";
 
 import React, { Children, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -11,13 +10,13 @@ import { apiClient } from "./lib/api-client";
 import { GET_USER_INFO } from "./utils/constants";
 
 //Harsh
-import Dashboard from './pages/Dashboard/Dashboard'
-import Schemes from './pages/dashboardpages/Scheme'
-import Irrigation from './pages/dashboardpages/Irrigation'
-import HistoricalYield from '@/pages/dashboardpages/Historical';
-import AISamadhaan from '@/pages/dashboardpages/Aisamadhan';
-import Weather from '@/pages/dashboardpages/Weather';
-import User from '@/pages/dashboardpages/User';
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Schemes from "./pages/dashboardpages/Scheme";
+import Irrigation from "./pages/dashboardpages/Irrigation";
+import HistoricalYield from "@/pages/dashboardpages/Historical";
+import AISamadhaan from "@/pages/dashboardpages/Aisamadhan";
+import Weather from "@/pages/dashboardpages/Weather";
+import User from "@/pages/dashboardpages/User";
 
 const PrivateRoute = ({ children }) => {
   const { userInfo } = useAppStore();
@@ -64,11 +63,9 @@ const App = () => {
   }
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<Landing/>}/>
-    <Route path="*" element={<Navigate to="/" />} />
-   
-    
+      <Routes>
+        <Route path="/" element={<Landing />} />
+
         <Route
           path="/auth"
           element={
@@ -78,14 +75,6 @@ const App = () => {
           }
         />
         <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        /> 
-         <Route
           path="/dashboard"
           element={
             <PrivateRoute>
@@ -93,14 +82,63 @@ const App = () => {
             </PrivateRoute>
           }
         />
-    
-    <Route path="/schemes" element={<Schemes/>}/>
-    <Route path="/irrigation" element={<Irrigation/>}/>
-    <Route path="/historical" element={<HistoricalYield/>} />
-    <Route path="/ai" element={<AISamadhaan/>} />
-    <Route path="/weather" element={<Weather/>} />
-    <Route path="/user" element={<User/>} />
-
+        <Route
+          path="/schemes"
+          element={
+            <PrivateRoute>
+              <Schemes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/irrigation"
+          element={
+            <PrivateRoute>
+              <Irrigation />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/historical"
+          element={
+            <PrivateRoute>
+              <HistoricalYield />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ai"
+          element={
+            <PrivateRoute>
+              <AISamadhaan />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/weather"
+          element={
+            <PrivateRoute>
+              <Weather />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <PrivateRoute>
+              <User />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
