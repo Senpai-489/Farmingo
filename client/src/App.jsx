@@ -66,6 +66,7 @@ const App = () => {
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Landing/>}/>
+    <Route path="*" element={<Navigate to="/" />} />
    
     
         <Route
@@ -99,7 +100,6 @@ const App = () => {
     <Route path="/ai" element={<AISamadhaan/>} />
     <Route path="/weather" element={<Weather/>} />
     <Route path="/user" element={<User/>} />
-    <Route path="*" element={<Navigate to="auth" />} />
 
       </Routes>
     </BrowserRouter>
