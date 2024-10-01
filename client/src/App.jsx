@@ -1,7 +1,6 @@
 
-import Landing from './pages/Landing/Landing'
-
 import React, { Children, useEffect, useState } from "react";
+import Landing from './pages/Landing/Landing'
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
 import Profile from "./pages/profile";
@@ -56,12 +55,11 @@ const App = () => {
   return (
     <BrowserRouter>
     <Routes>
-    <Route path="/" element={<Landing/>}/>
-    <Route path="/auth" element={<Auth/>}/>
-    <Route path="/profile" element={<Profile/>}/>
-    <Route path='*' element={<Navigate to="auth"/>}/>
-    </Routes>
-      <Routes>
+    <Route path="/landing" element={<Landing/>}/>
+    {/* <Route path="/auth" element={<Auth/>}/> */}
+    {/* <Route path="/profile" element={<Profile/>}/> */}
+    {/* <Route path='*' element={<Navigate to="landing"/>}/> */}
+   
         <Route
           path="/auth"
           element={
@@ -86,7 +84,8 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Navigate to="auth" />} />
+        <Route path="*" element={<Navigate to="landing  " />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
     </BrowserRouter>
   );

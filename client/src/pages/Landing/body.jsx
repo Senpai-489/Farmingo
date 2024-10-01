@@ -2,6 +2,7 @@ import { BookDashed } from "lucide-react";
 import React from "react";
 import Farmer from "../../assets/img1_farmer.jpg"
 import About from "./About";
+import Features from "./Features";
 function Body(){
     return <div>
     <div className=" inline rounded-tr-[60px] rounded-bl-[60px] left-28 top-28 absolute bg-sky-900 h-4/6 w-3/12">
@@ -13,6 +14,7 @@ function Body(){
        
     </div>
     <About/>
+    <Features/>
     </div>
 }
 
