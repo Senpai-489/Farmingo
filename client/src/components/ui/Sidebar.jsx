@@ -22,7 +22,7 @@ import { useAppStore } from '@/store';
 
 const Sidebar = () => {
   // Sidebar toggle state
-  const{userInfo, setUserInfo}=useAppStore();
+  const {userInfo}=useAppStore();
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false); // State for theme
 
@@ -70,7 +70,7 @@ const Sidebar = () => {
         <div className="absolute bottom-0 w-full p-4">
           <div className="flex items-center">
             <SvgComponenta className="w-20 h-14 rounded-full " />
-            {isOpen && <span className="ml-4 text-white">{userInfo.firstName + userInfo.lastName}</span>}
+            {isOpen && <span className="ml-4">{userInfo.firstName+userInfo.lastName}</span>}
           </div>
         </div>
       </div>

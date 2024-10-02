@@ -98,4 +98,92 @@ const createToken = (email, userId) => {
       return res.status(500).send("Internal server error");
     }
   };
+
   
+
+// export const updateProfile = async (req, res, next) => {
+//   try {
+//     const { userId } = req;
+//     const { firstName, lastName, areaOfLand, location } = req.body;
+//     if (!firstName || !lastName) {
+//       return res
+//         .status(400)
+//         .send("Firstname and Lastname are required.");
+//     }
+
+//     const userData = await User.findByIdAndUpdate(
+//       userId,
+//       {
+//         firstName,
+//         lastName,
+//         areaOfLand,
+//         location,
+//         profileSetup: true,
+//       },
+//       { new: true, runValidators: true }
+//     );
+
+//     return res.status(200).json({
+//       id: userData.id,
+//           email: userData.email,
+//           firstName: userData.firstName,
+//           lastName: userData.lastName,
+//           areaOfLand: userData.areaOfLand,
+//           location: userData.location,
+
+//           profileSetup: userData.profileSetup,
+//     });
+//   } catch (error) {
+//     console.log({ error });
+//     return res.status(500).send("Internal server error");
+//   }
+// };
+  
+export const updateProfile = async (req, res, next) => {
+  try {
+    const { userId } = req;  // Ensure this is coming from auth middleware or session
+    const { firstName, lastName, areaOfLand, location } = req.body;
+
+    // Validation for required fields
+    if (!firstName || !lastName) {
+      return res.status(400).json({ message: "Firstname and Lastname are required." });
+    }
+
+    // Optional validation for location array (latitude and longitude)
+    if (!Array.isArray(location) || location.length !== 2) {
+      return res.status(400).json({ message: "Invalid location format. Expecting [latitude, longitude]." });
+    }
+
+    // Update user profile with the new data
+    const userData = await User.findByIdAndUpdate(
+      userId,
+      {
+        firstName,
+        lastName,
+        areaOfLand,
+        location,
+        profileSetup: true,
+      },
+      { new: true, runValidators: true }  // Return updated document and apply schema validation
+    );
+
+    if (!userData) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Return the updated user data
+    return res.status(200).json({
+      id: userData._id,
+      email: userData.email,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      areaOfLand: userData.areaOfLand,
+      location: userData.location,
+      profileSetup: userData.profileSetup,
+    });
+
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
