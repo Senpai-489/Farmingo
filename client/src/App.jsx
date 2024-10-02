@@ -1,7 +1,6 @@
 
-import Landing from './pages/Landing/Landing'
-
 import React, { Children, useEffect, useState } from "react";
+import Landing from './pages/Landing/Landing'
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
 import Profile from "./pages/profile";
