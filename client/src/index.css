@@ -64,3 +64,25 @@
     @apply bg-background text-foreground;
   }
 }
+/* Example of custom styling */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}

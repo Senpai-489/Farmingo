@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@heroicons/react": "^2.1.5",
+    "@material-tailwind/react": "^2.1.10",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
     "@coreui/coreui": "^5.1.2",
     "@coreui/react": "^5.4.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "axios": "^1.7.7",
+    "boxicons": "^2.1.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.3.0",
