@@ -18,7 +18,7 @@ function Navbar(){
         document.getElementById("Contact").scrollIntoView({behavior: 'smooth' });
     }
     
-    return <div className="inline mx-auto my-auto">
+    return <div className="inline mx-auto my-auton hover:opacity-100">
         <Button size="lg" onClick={goHome} className="text-base bg-transparent rounded-full mr-5 text-[1f2f41] font-bold hover:text-white">Home</Button>
         <Button size="lg" onClick={goAbout} className="text-base bg-transparent rounded-full mr-5 text-[1f2f41] font-bold hover:text-white">About</Button>
         <Button size="lg" onClick={goFeatures} className="text-base bg-transparent rounded-full mr-5 text-[1f2f41] font-bold hover:text-white">Features</Button>
