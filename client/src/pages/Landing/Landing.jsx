@@ -10,7 +10,7 @@ import Body from "./body";
 
 
 
-        return <div className="h-[400vh] bg-scroll bg-gradient-to-r from-blue-200 to-blue-300">
+        return <div className="h-[450vh] bg-scroll overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300">
         <div className="flex backdrop-blur-[4px] z-20 items-center fixed justify-between ">
         <img src={Farmingo} alt="logo" className="w-40 mr-96 inline"/>
         <Navbar />
