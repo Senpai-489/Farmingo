@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import Navbar from "./Navbar";
 import Body from "./body";
 
+
     function Landing(){
         const navigate = useNavigate();
 
-
+        
 
         return <div className="h-[450vh] bg-scroll overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300">
         <div className="flex backdrop-blur-[4px] z-20 items-center fixed justify-between ">
