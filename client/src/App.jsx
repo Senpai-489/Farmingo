@@ -6,7 +6,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
 import Profile from "./pages/profile";
 import { useAppStore } from "./store";
-// import Dashboard from "./pages/dashboard";
 import { apiClient } from "./lib/api-client";
 import { GET_USER_INFO } from "./utils/constants";
 
@@ -28,7 +27,7 @@ const PrivateRoute = ({ children }) => {
 const AuthRoute = ({ children }) => {
   const { userInfo } = useAppStore();
   const isAuthenticated = !!userInfo;
-  return isAuthenticated ? <Navigate to="/profile" /> : children;
+  return isAuthenticated ? <Navigate to="/dashboard" /> : children;
 };
 const App = () => {
   const { userInfo, setUserInfo } = useAppStore();
