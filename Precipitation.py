@@ -5,20 +5,32 @@ import h5py as hdf
 from sklearn.linear_model import LinearRegression 
 import requests as rq
 from requests.auth import HTTPBasicAuth
+from bs4 import BeautifulSoup as bs
 
-rq.get(
-    "https://arthurhouhttps.pps.eosdis.nasa.gov/trmmdata/ByDate/V07/2019/03/",
-    auth=HTTPBasicAuth("duttdigvijay@gmail.com", "duttdigvijay@gmail.com")
-)
+#API QUERY
+url="https://arthurhouhttps.pps.eosdis.nasa.gov/trmmdata/ByDate/V07/2019/01/"
+username="duttdigvijay@gmail.com"
+pswd="duttdigvijay@gmail.com"
 
-with hdf.File('data.HDF5', 'r') as f:
-    data_keys = list(f.keys())
-    data= f.get('Grid')
-    dataset = data.get('precipitation')
-    df=pd.DataFrame(np.array(dataset))
-    
-TrainSet=[]
-TrainOp=[]
-predictor = LinearRegression()
-predictor.fit(X=TrainSet, y=TrainOp)
-predictor.predict(X=[[]])
+#Web Scraping Data & Data Preprocessing
+data1 = rq.get(url, auth=HTTPBasicAuth(username,pswd))
+data2 = bs(data1.text, 'html.parser')
+listOfDays = data2.body.table
+linkOfDays = listOfDays.find_all('a')[5:]
+dataPerDay = []
+for i in linkOfDays:
+    dirc= i.text
+    urlhdf= url + dirc
+    l= rq.get(urlhdf ,auth=HTTPBasicAuth(username,pswd))
+    page= bs(l.text, 'html.parser')
+    Table= page.body.table
+    dataPerDay.append(Table)
+#         dataOfday = page.find_all('tr')[3:-1]
+#         dataPerDay.append(dataOfday)
+print('done')
+        
+# TrainSet=[]
+# TrainOp=[]
+# predictor = LinearRegression()
+# predictor.fit(X=TrainSet, y=TrainOp)
+# predictor.predict(X=[[]])
