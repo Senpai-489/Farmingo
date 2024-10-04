@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   location: {
-    type: {
+    type: {   
       type: String,   // GeoJSON type must be "Point"
       enum: ['Point'], // Only accept 'Point'
       required: false
