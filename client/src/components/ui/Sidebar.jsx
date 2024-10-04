@@ -39,7 +39,7 @@ const Sidebar = () => {
         </div>
 
         <ul className="mt-6">
-          {['Dashboard', 'New Schemes', 'Irrigation Model', 'Historical Yield', 'AI Samadhaan', 'Weather', 'User'].map((item, index) => {
+          {['Dashboard', 'News', 'Irrigation Model', 'Historical Yield', 'AI Assistant', 'Weather', 'User'].map((item, index) => {
             const path = `${index === 0 ? 'dashboard' : index === 1 ? 'schemes' : index === 2 ? 'irrigation' : index === 3 ? 'historical' : index === 4 ? 'ai' : index === 5 ? 'weather' : 'user'}`;
 
             return (
