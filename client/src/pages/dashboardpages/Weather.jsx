@@ -1,5 +1,5 @@
 import Sidebar from "@/components/ui/Sidebar"
-import Weatherdata from "@/pagedata/Weatherdata";
+import App from "@/pagedata/disesaes";
 
 const Weather=()=>{
    return( <div className="flex h-screen">
@@ -10,7 +10,7 @@ const Weather=()=>{
     <div className="flex-1 flex flex-col">
      
     <div className="bg-gray-800 p-4 pl-10 text-white flex items-center justify-between" style={{ backgroundColor: '#365170' }}>
-<h1 className="text-xl">Weather</h1>
+<h1 className="text-xl">Crop Diseases</h1>
 <div className="flex items-center space-x-6">
 <i className="bx bx-bell text-2xl cursor-pointer"></i>
 <i className="bx bx-cog text-2xl cursor-pointer"></i>
@@ -21,7 +21,7 @@ const Weather=()=>{
 
       
       <div className="flex-1 p-8 bg-gray-100">
-        <Weatherdata/>
+        <App/>
         
       </div>
     </div>
