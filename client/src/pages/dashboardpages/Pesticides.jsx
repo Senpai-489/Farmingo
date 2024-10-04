@@ -1,6 +1,7 @@
 import Sidebar from "@/components/ui/Sidebar"
 // import Irrigationdata from "@/pagedata/Irrigationdata";
 import App from "@/pagedata/disesaes";
+import PestData from "@/pagedata/Pesticidesdata";
 const CropDetails=()=>{
    return( 
 <div className="flex h-screen">
@@ -23,7 +24,7 @@ const CropDetails=()=>{
         
         <div className="flex-1 p-8 bg-gray-100">
             
-          <App/>
+          <PestData/>
         </div>
       </div>
     </div>
