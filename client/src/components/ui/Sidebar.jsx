@@ -11,10 +11,11 @@ import AISamadhaan from '@/pages/dashboardpages/Aisamadhan.jsx';
 import Weather from '@/pages/dashboardpages/Weather.jsx';
 import User from '@/pages/dashboardpages/User.jsx';
 import CropDetails from '@/pages/dashboardpages/Pesticides';
+import { useAppStore } from '@/store';
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false); 
-
+  const {userInfo}=useAppStore()
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -57,7 +58,7 @@ const Sidebar = () => {
         <div className="absolute bottom-0 w-full p-4">
           <div className="flex items-center">
             <SvgComponenta className="w-20 h-14 rounded-full" />
-            {isOpen && <span className="ml-4">Kisan Name</span>}
+            {isOpen && <span className="ml-4">{userInfo.firstName+userInfo.lastName}</span>}
           </div>
         </div>
       </div>
