@@ -18,7 +18,7 @@ import HistoricalYield from "@/pages/dashboardpages/Historical";
 import AISamadhaan from "@/pages/dashboardpages/Aisamadhan";
 import Weather from "@/pages/dashboardpages/Weather";
 import User from "@/pages/dashboardpages/User";
-
+import CropDetails from "./pages/dashboardpages/Pesticides";
 const PrivateRoute = ({ children }) => {
   const { userInfo } = useAppStore();
   const isAuthenticated = !!userInfo;
@@ -104,6 +104,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <HistoricalYield />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/pesticide"
+          element={
+            <PrivateRoute>
+              <CropDetails/>
             </PrivateRoute>
           }
         />
