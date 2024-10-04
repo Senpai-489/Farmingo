@@ -24,10 +24,13 @@ for i in linkOfDays:
     l= rq.get(urlhdf ,auth=HTTPBasicAuth(username,pswd))
     page= bs(l.text, 'html.parser')
     Table= page.body.table
-    dataPerDay.append(Table)
-#         dataOfday = page.find_all('tr')[3:-1]
-#         dataPerDay.append(dataOfday)
-print('done')
+    linkPerDay= Table.find_all('a')[5:]
+    dataPerDay.append(linkPerDay)
+
+for j in dataPerDay:
+    if j.text[-4:] != 'HDF5' :
+        dataPerDay.remove(j)
+
         
 # TrainSet=[]
 # TrainOp=[]
