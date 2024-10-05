@@ -21,12 +21,12 @@ This project implements a web-based application designed to empower farmers by p
 - **JWT Authentication:** User Authentication implemented using JWT.
 - **Frontend UI DashBoard:** Frontend UI implemented using React and Tailwind CSS
 - **Features Implemented on Day 1:**
- Crop Disease Prediction
- Pesticide Suggestion
- Crop Water Analysis
- Profile Setup
- News and Schemes Page
- AI chatbot
+ - Crop Disease Prediction
+ - Pesticide Suggestion
+ - Crop Water Analysis
+ - Profile Setup
+ - News and Schemes Page
+ - AI chatbot
 
 ## Technologies Used
 - **Machine Learning Models:**
