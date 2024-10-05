@@ -106,7 +106,7 @@ const Profile = () => {
         <img src="logo_svg.svg" />
       </div>
       <div onClick={handleNavigate} className="">
-        <IoArrowBack className="text-4xl lg:text-5xl text-[#365170]/90 cursor-pointer" />
+        <IoArrowBack className="w-12 relative right-72 top-4 text-4xl lg:text-5xl text-[#365170]/90 cursor-pointer" />
       </div>
       <div className="space-y-4 h-[110vh] flex flex-col items-center justify-center ">
         <h2 className="text-3xl font-bold mb-6 my-2">Farmer Profile</h2>
