@@ -34,6 +34,7 @@ const CropAnalysis = () => {
   const [newMoisture, setNewMoisture] = useState("");
   const [newHeight, setNewHeight] = useState("");
   const [loading, setLoading] = useState(false);
+  const [farmerquery, setfarmerquery] = useState("");
 
   const handleSubmit = async () => {
     if (!startDate || !crop) {
@@ -61,7 +62,7 @@ const CropAnalysis = () => {
 
   const handleFarmerDataSubmit = () => {
     if (!newDay || !newMoisture || !newHeight) {
-      alert("Please fill in all fields for day, moisture, and height.");
+      setfarmerquery("Please fill in all fields for day, moisture, and height.");
       return;
     }
 
@@ -118,7 +119,7 @@ const CropAnalysis = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-5 font-sans"> {/* Adjusted container for width */}
+    <div className="max-w-6xl mx-auto p-5 font-sans"> 
       <h2 className="text-4xl text-center text-gray-800"><b>Analyse your crop Growth</b></h2>
       <h4 className="text-2xl text-center text-gray-800">Enter the date of your crop grown and the crop name </h4>
 
@@ -131,7 +132,7 @@ const CropAnalysis = () => {
         />
         <input
           type="text"
-          placeholder="Enter crop type"
+          placeholder="Enter crop Name"
           value={crop}
           onChange={(e) => setCrop(e.target.value)}
           className="p-2 mx-2 border rounded border-gray-300 w-full md:w-52"
@@ -146,7 +147,7 @@ const CropAnalysis = () => {
       </div>
       {responseMessage && <p className="text-center">{responseMessage}</p>}
 
-      <h3 className="mt-5 text-xl text-center">Update Farmer Crop Data</h3>
+      <h3 className="mt-5 text-l text-center">Update Farmer Crop Data</h3>
       <div className="flex flex-col md:flex-row justify-center mb-5">
         <input
           type="number"
@@ -157,14 +158,14 @@ const CropAnalysis = () => {
         />
         <input
           type="number"
-          placeholder="Enter moisture"
+          placeholder="moisture(%)"
           value={newMoisture}
           onChange={(e) => setNewMoisture(e.target.value)}
           className="p-2 mx-2 border rounded border-gray-300 w-full md:w-28"
         />
         <input
           type="number"
-          placeholder="Enter height"
+          placeholder="height(cm)"
           value={newHeight}
           onChange={(e) => setNewHeight(e.target.value)}
           className="p-2 mx-2 border rounded border-gray-300 w-full md:w-28"
@@ -175,8 +176,9 @@ const CropAnalysis = () => {
         >
           Submit Farmer Data
         </button>
+       
       </div>
-
+      <h6 className="text-center ">{farmerquery}</h6>
       {growthData.length > 0 && (
         <div>
           <div className="flex flex-col md:flex-row justify-between mb-5">
