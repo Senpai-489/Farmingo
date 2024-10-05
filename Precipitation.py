@@ -34,7 +34,7 @@ for i in linkOfDays:
     dataPerDay.append(linkPerDay)
 
 myfile= pl.Path("2019/01/01/3B42.20190101.15.7.HDF5")
-if myfile.is_file():
+if (myfile.is_file() == False):
     for j in dataPerDay:
         for k in j:
             fileN = k["href"]
