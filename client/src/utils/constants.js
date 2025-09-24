@@ -1,4 +1,5 @@
-export const HOST = "https://backendauthfarmingo.vercel.app" ;
+// export const HOST = "https://backendauthfarmingo.vercel.app" ;
+export const HOST = "http://localhost:7600" ;
 
 export const AUTH_ROUTES = "api/auth";
 export const SIGNUP_ROUTE = `${AUTH_ROUTES}/signup`;
