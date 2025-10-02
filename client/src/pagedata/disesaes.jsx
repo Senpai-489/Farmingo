@@ -37,7 +37,8 @@ const App = () => {
       setPrediction(null);
 
       const response = await axios.post(
-        "https://google-clouddeploy-238365468738.us-central1.run.app/predict/",
+        // "https://google-clouddeploy-238365468738.us-central1.run.app/predict/",
+        "http://localhost:8000/predict/",
         formData,
         {
           headers: {

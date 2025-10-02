@@ -11,13 +11,23 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const databaseURL = process.env.DATABASE_URL
 
+const allowedOrigins = [
+  "http://localhost:5173"  
+];
+
 app.use(
-    cors({
-      origin: [process.env.ORIGIN], //frontend urls which send requests
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-      credentials: true, //enable cookies
-    })
-  );
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 
   app.use(cookieParser())
   app.use(express.json())
